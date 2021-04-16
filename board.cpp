@@ -40,9 +40,10 @@ short Board::getAliveNeighbors(const int& rowIndex, const int& columnIndex) {
             if (board[neighborRow][neighborColumn]) total++;
         }
     }
-    // One is removed because the algorithm above also counts itself
+    // One is removed because the algorithm above also counts itself if it's alive
     // In this case we only want to get the neigbors
-    return total - 1;
+    return board[rowIndex][columnIndex] 
+           ? total - 1 : total;
 }
 
 void Board::nextGeneration() {
@@ -62,9 +63,10 @@ void Board::nextGeneration() {
             aliveNeighbors = getAliveNeighbors(i, j);
            
             // Determines whether a cell lives or dies in the next generation 
+            revisedCell = currentCell;
             if (currentCell) {
-                if (aliveNeighbors == 2 || aliveNeighbors == 3) revisedCell = 1;
-                else revisedCell = 0;
+                if (aliveNeighbors < 2) revisedCell = 0;
+                else if (aliveNeighbors > 3) revisedCell = 0;
             } else if (aliveNeighbors == 3) revisedCell = 1;
             buffer[i][j] = revisedCell;
         }

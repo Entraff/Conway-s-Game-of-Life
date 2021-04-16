@@ -10,10 +10,10 @@ void sleep(uint32_t x) {
 
 int main() {
     std::vector<std::vector<bool>> initialBoard = {
-        {0, 0, 0, 1, 1},
-        {0, 0, 0, 1, 0},
-        {0, 0, 0, 1, 1},
-        {0, 0, 0, 1, 1}
+        {1, 1, 0, 0, 0},
+        {1, 1, 0, 0, 0},
+        {0, 0, 1, 1, 0},
+        {0, 0, 1, 1, 0}
     };
     Board board(initialBoard);
     
