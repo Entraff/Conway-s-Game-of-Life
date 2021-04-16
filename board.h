@@ -9,10 +9,10 @@ class Board {
         std::vector<std::vector<bool>> board;
         int rows;
         int columns;
+        short getAliveNeighbors(const int& rowIndex, const int& columnIndex);
     public:
         Board(const std::vector<std::vector<bool>>& _board);
         void printBoard();
-        short getAliveNeighbors(const int& rowIndex, const int& columnIndex);
         void nextGeneration();
 };
 
